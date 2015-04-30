@@ -1,0 +1,88 @@
+@(currentPage: web.Page[(data.Video, data.VideoCategory)], currentOrderBy: Int, currentFilter: String)(implicit flash: play.api.mvc.Flash)
+
+@link(newPage: Int, newOrderBy: Option[Int] = None) = @{
+    controllers.admin.routes.VideoController.list(newPage, newOrderBy.map { orderBy =>
+        if(orderBy == scala.math.abs(currentOrderBy)) -currentOrderBy else orderBy
+    }.getOrElse(currentOrderBy), currentFilter)
+
+}
+
+@header(orderBy: Int, title: String) = {
+    <th class="col@orderBy header @if(scala.math.abs(currentOrderBy) == orderBy) @{if(currentOrderBy < 0) "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, Some(orderBy))">@title</a>
+    </th>
+}
+
+@views.html.template.admin("Видео", "video", false) {
+    @flash.get("success").map { message =>
+        <div class="alert-message warning">
+            <strong>Done!</strong> @message
+        </div>
+    }
+    <div id="actions">
+        <a type="button" class="btn btn-success" id="add" href="@controllers.admin.routes.VideoController.create()">Добавить</a>
+        <form action="/admin/videoList" method="GET" class="navbar-form navbar-right">
+            <div class="form-group">
+                <input type="search" class="form-control" id="searchbox" name="f" value="@currentFilter" placeholder="Наименование">
+            </div>
+            <input type="submit" id="searchsubmit" value="Поиск" class="btn btn-primary">
+        </form>
+    </div>
+    @Option(currentPage.items).filterNot(_.isEmpty).map { videos =>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+            @header(2, "Наименование")
+            @header(3, "Категория")
+            @header(4, "Дата создания")
+        </tr>
+    </thead>
+    <tbody>
+        @videos.map {
+            case (video, category) => {
+                <tr>
+                <td><a href="@controllers.admin.routes.VideoController.edit(video.id)">@video.name</a></td>
+                <td>
+                    @category.name
+                </td>
+                <td>
+                    @video.introduced
+                </td>
+                </tr>
+            }
+        }
+    </tbody>
+    </table>
+    <div id="pagination">
+    <ul class="pagination">
+        @currentPage.prev.map { page =>
+        <li class="prev">
+        <a href="@link(page)">&larr; Previous</a>
+        </li>
+        }.getOrElse {
+            <li class="prev disabled">
+                <a>&larr; Previous</a>
+            </li>
+        }
+    <li class="current">
+    <a>Displaying @(currentPage.offset + 1) to @(currentPage.offset + videos.size) of @currentPage.total</a>
+    </li>
+        @currentPage.next.map { page =>
+        <li class="next">
+        <a href="@link(page)">Next &rarr;</a>
+        </li>
+        }.getOrElse {
+            <li class="next disabled">
+                <a>Next &rarr;</a>
+            </li>
+        }
+    </ul>
+    </div>
+    }.getOrElse {
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+    }
+}
+
+            

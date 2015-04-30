@@ -1,0 +1,31 @@
+@(videoForm: Form[models.web.VideoWeb])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(views.html.template.fields.bootstrapInput.render) }
+
+@views.html.template.admin("Видео", "video") {
+    @helper.form(action = controllers.admin.routes.VideoController.createPost(),
+        'class -> "form-horizontal", 'id -> "createVideoForm", 'role -> "form") {
+        <div class="well form-horizontal" style="margin-top: 70px">
+            <h1>Новое видео</h1>
+            <fieldset>
+                @inputText(videoForm("name"), '_label -> "Название", 'class->"form-control")
+                @select(
+                    videoForm("categoryId"),
+                    options(models.data.VideoCategory.options),
+                    '_label -> "Категория", '_default -> "-- Категория --", 'class->"form-control",
+                    '_showConstraints -> false
+                )
+                @inputText(videoForm("rating"), '_label -> "Рейтинг", 'class->"form-control")
+                @inputText(videoForm("tags"),'_label -> "Теги", 'class->"form-control")
+                @textarea(videoForm("link"),'_label -> "Ссылка", 'class->"form-control")
+                @textarea(videoForm("description"), '_label -> "Описание", 'class->"form-control")
+                <div class="actions" style="margin-top: 10px">
+                    <a type="submit" class="btn btn-primary">Создать</a>
+                    <a href="#" class="btn btn-default">Отмена</a>
+                </div>
+            </fieldset>
+        </div>
+    }
+}

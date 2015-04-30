@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="SBT: org.squeryl:squeryl_2.10:0.9.5-6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../play-2.2.0/repository/cache/org.squeryl/squeryl_2.10/jars/squeryl_2.10-0.9.5-6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../play-2.2.0/repository/cache/org.squeryl/squeryl_2.10/docs/squeryl_2.10-0.9.5-6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../play-2.2.0/repository/cache/org.squeryl/squeryl_2.10/srcs/squeryl_2.10-0.9.5-6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

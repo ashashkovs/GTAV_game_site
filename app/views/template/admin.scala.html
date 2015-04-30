@@ -1,0 +1,42 @@
+@(title: String, tab: String, isLogin: Boolean = false)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@Messages(title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @libs.admin_libs()
+</head>
+<body>
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <a href="../" class="navbar-brand">GTA5 TV</a>
+            </div>
+            @if(!isLogin){
+                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                    <p class="navbar-text pull-right">
+                        <a href="/admin/logout" class="navbar-link">Выйти</a>
+                    </p>
+                    <ul class="nav navbar-nav">
+                        <li class="@if(tab == "news"){active}">
+                            <a href="@controllers.admin.routes.NewsController.list()">Новости</a>
+                        </li>
+                        <li class="@if(tab == "video"){active}">
+                            <a href="@controllers.admin.routes.VideoController.list()">Видео</a>
+                        </li>
+                    </ul>
+                </nav>
+            }
+        </div>
+    </header>
+    <section id="main" class="container-main">
+        <div class="container"  id="center-container">
+            @content
+        </div>
+    </section>
+</body>
+</html>

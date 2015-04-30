@@ -1,0 +1,37 @@
+@(loginForm: Form[(String, String, String)])(implicit flash: play.api.mvc.Flash)
+
+@import play.api.cache.Cache
+@import play.api.Play.current
+@import helper._
+
+@implicitFieldConstructor = @{
+    FieldConstructor(views.html.template.fields.bootstrapInput.render)
+}
+
+@views.html.template.admin("Админка", "", true) {
+    @loginForm.globalError.map { error =>
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert"> &times; </button>
+            @Messages(error.message)
+        </div>   }
+    @flash.get("success").map { message =>
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert"> &times; </button>
+            @Messages(message)
+        </div>
+    }
+
+    <div class="well">
+        @helper.form(controllers.admin.routes.AdminController.auth()) {
+            <input id="internalPath" type="hidden" value="@{
+                Cache.get("internalLegalPath")
+            }" name="internalPath" />
+            @inputText( loginForm("login"), '_label -> "Логин", 'class -> "form-control")
+            @inputText( loginForm("password"), '_label -> "Пароль", 'class -> "form-control")
+            <div class="actions">
+                <input type="submit" class="btn btn-primary" value="Войти" >
+            </div>
+        }
+    </div>
+
+}

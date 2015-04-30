@@ -1,0 +1,23 @@
+@(video: models.data.Video)
+
+@views.html.template.main("Видео: " + video.name, "video") {
+    <div class="container" id="center-container">
+        <article class="content-list">
+            <section class="video-interface">
+                <div class="site-wrapper">
+                    <div class="video-details">
+                        <h3 class="content-list h3"> @video.name </h3>
+                        <p class="excerpt">@Html(video.description)</p>
+                    </div>
+                    <div class="video-player">
+                        <iframe width="620" height="354" src="//www.youtube.com/embed/@video.link?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8">
+                    </script>
+                    <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,friendfeed,moikrug,gplus,surfingbird">
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+}

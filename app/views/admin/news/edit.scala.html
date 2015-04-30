@@ -1,0 +1,46 @@
+@(id: Int, newsForm: Form[models.web.NewsWeb])
+
+@import helper._
+
+@implicitFieldConstructor = @{
+    FieldConstructor(views.html.template.fields.bootstrapInput.render)
+}
+
+@views.html.template.admin("Новости", "news") {
+    @helper.form(action = controllers.admin.routes.NewsController.editPost(id),
+        'class -> "form-horizontal", 'id -> "editNewsForm", 'role -> "form") {
+        <div class="well form-horizontal">
+            <h1> Редактирование новости </h1>
+            <fieldset>
+                @inputText(newsForm("name"), '_label -> "Название", 'class -> "form-control")
+                @inputText(newsForm("shortName"), '_label -> "Краткое название", 'class -> "form-control")
+                @inputText(newsForm("link"), '_label -> "Ссылка", 'class -> "form-control")
+                @inputText(newsForm("tags"), '_label -> "Теги", 'class -> "form-control")
+                @inputText(newsForm("like"), '_label -> "Лайки", 'class -> "form-control")
+                @inputText(newsForm("preview"), '_label -> "Превью", 'class -> "form-control")
+                <div class="form-group  @if(newsForm("description").hasErrors){error}">
+                    <label for="description" class="control-label">Описание</label>
+                    <div class="control-item">
+                        <textarea class="ckeditor" cols="80" id="description" name="description" rows="10" style="visibility: hidden; display: none;">
+                            @newsForm("description").value.get
+                        </textarea>
+                        <span class="help-inline">
+                            @if(newsForm("description").hasErrors) {@newsForm("description").value.get}
+                        </span>
+                    </div>
+                </div>
+                <div class="actions" style="margin-top: 10px">
+                    <button type="submit" class="btn btn-primary"> Сохранить </button>
+                    <a type="submit" class="btn btn-primary"> Удалить </a>
+                    <a href="#" class="btn btn-default"> Отмена </a>
+                </div>
+            </fieldset>
+        </div>
+    }
+    <script type="text/javascript">
+            $(document).ready(function() {
+                //$('#editor').wysiwyg();
+
+            });
+    </script>
+}

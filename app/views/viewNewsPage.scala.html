@@ -1,0 +1,19 @@
+@(news: models.data.News)
+
+@views.html.template.main("Новость: " + news.name, "news") {
+    <div class="container" id="center-container">
+        <section class="video-interface">
+            <div class="site-wrapper">
+                <div class="news-page-details">
+                    <h3 class="news-h3"> @news.name </h3>
+                    <div class="news-date"> @news.introduced </div>
+                    <div class="excerpt"> @Html(news.description) </div>
+                </div>
+                <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8">
+                </script>
+                <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,lj,friendfeed,moikrug,gplus,surfingbird">
+                </div>
+            </div>
+        </section>
+    </div>
+}

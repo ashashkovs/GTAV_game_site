@@ -1,0 +1,120 @@
+@(topVideoList: Seq[models.data.Video], topNewsList: Seq[models.data.News])
+
+@views.html.template.main("Grand Theft Auto V | Видео, новости, коды, прохождение, скриншоты, карты, радио - GTA5TV.ru", "main") {
+    <div class="container" id="center-container">
+        <div id="carousel-gta-captions" class="carousel slide bs-docs-carousel-gta">
+            <ol class="carousel-indicators" style="visibility : hidden ;">
+                <li data-target="#carousel-gta-captions" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-gta-captions" data-slide-to="1" class=""></li>
+                <li data-target="#carousel-gta-captions" data-slide-to="2" class=""></li>
+                <li data-target="#carousel-gta-captions" data-slide-to="3" class=""></li>
+            </ol>
+            <div class="carousel-inner" style="-webkit-box-shadow: 0 0 8px 0 #000000; box-shadow: 0 0 8px 0 #000000;">
+                <div class="item active">
+                    <a href="@controllers.routes.VideoController.videoList(1, "", "", "")">
+                        <img class="img-max-width" class="img-max-width" src="@routes.Assets.at("images/banner-01.jpg")" alt="">
+                    </a>
+                    <span class="image-caption-banner current" style="opacity : 0.7 ; width : 100% ; bottom : 0px ; margin-top : 35% ;">
+                        <div class="caption-banner">
+                            <div class="image-desc">Исследуйте огромный мир!</div>
+                        </div>
+                    </span>
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="@controllers.routes.VideoController.videoList(1, "", "", "")">
+                        <img class="img-max-width" src="@routes.Assets.at("images/banner-02.jpg")" alt="">
+                    </a>
+                    <span class="image-caption-banner current" style="opacity : 0.7 ; width : 100% ; bottom : 0px ; margin-top : 35% ;">
+                        <div class="caption-banner">
+                            <div class="image-desc">Выполняйте захватывающие задания!</div>
+                        </div>
+                    </span>
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="@controllers.routes.VideoController.videoList(1, "", "", "")">
+                        <img class="img-max-width" src="@routes.Assets.at("images/banner-03.jpg")" alt="">
+                    </a>
+                    <span class="image-caption-banner current" style="opacity : 0.7 ; width : 100% ; bottom : 0px ; margin-top : 35% ;">
+                        <div class="caption-banner">
+                            <div class="image-desc">Ощутите незабываемую атмосферу! </div>
+                        </div>
+                    </span>
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="@controllers.routes.VideoController.videoList(1, "", "", "")">
+                        <img class="img-max-width" src="@routes.Assets.at("images/banner-04.jpg")" alt="">
+                    </a>
+                    <span class="image-caption-banner current" style="opacity : 0.7 ; width : 100% ; bottom : 0px ; margin-top : 35% ;">
+                        <div class="caption-banner">
+                            <div class="image-desc">Играйте в GTA 5 !</div>
+                        </div>
+                    </span>
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-gta-captions" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-gta-captions" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
+        <div class="container-video">
+            <section id="topVideo" class="video-section">
+                <div class="top-level-header">
+                    <h2>@Messages("ТОП видео")</h2>
+                    <div class="video-level-header-hr"></div>
+                </div>
+                <ul class="featured-classes">
+                    @for(video <- topVideoList){
+                        <li class="featured-class">
+                            <a href="@controllers.routes.VideoController.view(video.id)" style="color: #FDFEFF">
+                                <img class="img-max-width" src="http://img.youtube.com/vi/@video.link/0.jpg" alt="@video.name">
+                                <span class="course-title">@video.shortName</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </section>
+            <section id="newVideo" class="video-section">
+                <div class="top-level-header">
+                    <h2>@Messages("ТОП новости")</h2>
+                    <div class="top-level-header-hr"></div>
+                </div>
+                <ul class="featured-classes">
+                    @for(news <- topNewsList){
+                        <li class="featured-class">
+                            <a href="@controllers.routes.NewsController.view(news.id)" style="color: #FDFEFF">
+                                <img class="img-max-width" src="@news.link" alt="@news.name">
+                                <span class="course-title">@news.shortName</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+            $ ( document ).ready (
+            $ ( '.carousel' ).carousel ( )
+            )
+
+    </script>
+
+}

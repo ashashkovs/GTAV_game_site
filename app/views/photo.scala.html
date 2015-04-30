@@ -1,0 +1,105 @@
+@(photoList: Seq[models.data.Photo])
+@views.html.template.main("Фото, скриншоты, арт, обои", "photo") {
+    <div class="container">
+        <div class="radioset-container-photo">
+            <div class="tabs">
+                <input type="radio" name="tab" id="tab1" checked="checked" onclick="loadPhotos ( 1 ) ;"/>
+                <label class="button-photo-category" for="tab1" alt="GTA 5 Обои">Обои</label>
+                <input type="radio" name="tab" id="tab2" onclick="loadPhotos ( 2 ) ;"/>
+                <label class="button-photo-category" for="tab2" alt="GTA 5 Скриншоты">Скриншоты</label>
+                <input type="radio" name="tab" id="tab3" onclick="loadPhotos ( 3 ) ;"/>
+                <label class="button-photo-category" for="tab3" alt="GTA 5 Арт">Арт</label>
+            </div>
+        </div>
+    </div>
+    <div id="photos_page">
+        <div id="container">
+            <div id="gallery" class="content">
+                <div id="controls" class="controls"></div>
+                <div class="slideshow-container">
+                    <div id="loading" class="loader"></div>
+                    <div id="slideshow" class="slideshow"></div>
+                </div>
+                <div id="caption" class="caption-container"></div>
+            </div>
+            <div id="thumbs" class="navigation">
+                <ul class="thumbs noscript">
+                @for(photo <- photoList) {
+                    <li>
+                        <a class="thumb" name="leaf" href="@photo.linkA" title="GTA 5 Image">
+                            <img class="img-max-width" src="@photo.linkA"/>
+                        </a>
+                        <div class="caption">
+                            <div class="download">
+                                <a href="@photo.linkB">Скачать оригинал</a>
+                            </div>
+                        </div>
+                    </li>
+                }
+                </ul>
+            </div>
+            <div style="clear : both ;"></div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        jQuery ( document ).ready ( function ( $ ) {
+            $ ( 'div.navigation' ).css ( { 'width' : '450px', 'float' : 'left' } ) ;
+            $ ( 'div.content' ).css ( 'display', 'block' ) ;
+
+            var onMouseOutOpacity = 0.67 ;
+            $ ( '#thumbs ul.thumbs li' ).opacityrollover ( {
+                mouseOutOpacity : onMouseOutOpacity,
+                mouseOverOpacity : 1.0,
+                fadeSpeed : 'fast',
+                exemptionSelector : '.selected'
+            } ) ;
+
+            var gallery = $ ( '#thumbs' ).galleriffic ( {
+                delay : 2500,
+                numThumbs : 15,
+                preloadAhead : 10,
+                enableTopPager : true,
+                enableBottomPager : true,
+                maxPagesToShow : 7,
+                imageContainerSel : '#slideshow',
+                controlsContainerSel : '#controls',
+                captionContainerSel : '#caption',
+                loadingContainerSel : '#loading',
+                renderSSControls : true,
+                renderNavControls : true,
+                playLinkText : 'Показ слайдов',
+                pauseLinkText : 'Пауза',
+                prevLinkText : '&lsaquo; Предыдущее фото',
+                nextLinkText : 'Следующее фото &rsaquo;',
+                nextPageLinkText : '&rsaquo;',
+                prevPageLinkText : '&lsaquo;',
+                enableHistory : false,
+                autoStart : false,
+                syncTransitions : true,
+                defaultTransitionDuration : 900,
+                onSlideChange : function ( prevIndex, nextIndex ) {
+                this.find ( 'ul.thumbs' ).children ( )
+                .eq ( prevIndex ).fadeTo ( 'fast', onMouseOutOpacity ).end ( )
+                .eq ( nextIndex ).fadeTo ( 'fast', 1.0 ) ;
+                },
+                onPageTransitionOut : function ( callback ) {
+                this.fadeTo ( 'fast', 0.0, callback ) ;
+                },
+                onPageTransitionIn : function ( ) {
+                this.fadeTo ( 'fast', 1.0 ) ;
+                }
+            } ) ;
+        } ) ;
+
+        function loadPhotos ( categoryId ) {
+            jsRoutes.controllers.PhotoController.loadsPhotoDetails ( categoryId ).ajax ( {
+                success : function ( data ) {
+                    $ ( "#container" ).replaceWith ( data ) ;
+                }
+            } )
+        }
+    </script>
+}

@@ -1,0 +1,366 @@
+
+package views.html
+
+import play.templates._
+import play.templates.TemplateMagic._
+
+import play.api.templates._
+import play.api.templates.PlayMagic._
+import models._
+import controllers._
+import play.api.i18n._
+import play.api.mvc._
+import play.api.data._
+import views.html._
+/**/
+object cheats extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template0[play.api.templates.HtmlFormat.Appendable] {
+
+    /**/
+    def apply/*1.2*/():play.api.templates.HtmlFormat.Appendable = {
+        _display_ {
+
+Seq[Any](format.raw/*1.4*/("""
+"""),_display_(Seq[Any](/*2.2*/views/*2.7*/.html.template.main("Коды, читы", "cheats")/*2.50*/ {_display_(Seq[Any](format.raw/*2.52*/("""
+    <div class="container" id="center-container">
+        <div class="container-cheats">
+            <div class="game-console">
+                <img class="cheats-img img-max-width" src=""""),_display_(Seq[Any](/*6.61*/routes/*6.67*/.Assets.at("images/Xbox_360_Logo.jpg"))),format.raw/*6.105*/("""" alt="gta5tv cheats for Xbox_360" >
+                <p style="margin-left : 30px ;">GTA 5 коды на Xbox 360</p>
+            </div>
+            <div class="accordion" id="accordion1">
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a class="accordion-toggle collapsed" href="#collapseXboxOne" data-toggle="collapse" data-parent="#accordion1"><br>
+                        <p class="cheats-list-btn">Эффекты для игрока</p><br>
+                    </a></div>
+                    <div class="accordion-body collapse" id="collapseXboxOne" style="height : 0px ;">
+                        <div class="accordion-inner">
+                            <table class="table font-cheats">
+                                <thead>
+                                    <tr>
+                                        <th>Эффект</th>
+                                        <th>Комбинация</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Пьяный режим</td>
+                                        <td>Y, Right, Right, Left, Right, X, B, Left</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Взрывной выстрел</td>
+                                        <td>Right, X, A, Left, RB, RT, Left, Right, Right, LB, LB, LB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Взрывы для ближнего боя</td>
+                                        <td>Right, Left, A, Y, RB, B, B, B, LT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Быстрый бег</td>
+                                        <td>Y, Left, Right, Right, LT, LB, X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Горящие пули</td>
+                                        <td>LB, RB, X, RB, Left, RT, RB, Left, X, Right, LB, LB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Понизить уровень розыска</td>
+                                        <td>RB, RB, B, RT, Right, Left, Right, Left, Right, Left</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Повысить уровень розыска</td>
+                                        <td>RB, RB, B, RT, Left, Right, Left, Right, Left, Right</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Восстановление</td>
+                                        <td>A, A, X, RB, LB, A, Right, Left, A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Замедление (использовать от 1 до 4 раз чтобы усилить эффект, пятый раз – чтобы отключить)</td>
+                                        <td>X, LT, RB, Y, Left, X, LT, Right, A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Падение с неба (вы появляетесь в небе, падаете и разбиваетесь насмерть!!!)</td>
+                                        <td>LB, LT, RB, RT, Left, Right, Left, Right, LB, LT, RB, RT, Left, Right, Left, Right</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить парашют</td>
+                                        <td>Left, Right, LB, LT, RB, RT, RT, Left, Left, Right, LB</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a class="accordion-toggle" href="#collapseXboxTwo" data-toggle="collapse" data-parent="#accordion1"><br>
+                        <p class="cheats-list-btn">Эффекты для окружения</p><br>
+                    </a></div>
+                    <div class="accordion-body collapse" id="collapseXboxTwo" style="height : 0px ;">
+                        <div class="accordion-inner">
+                            <table class="table font-cheats">
+                                <thead>
+                                    <tr>
+                                        <th>Эффект</th>
+                                        <th>Комбинация</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Смена погоды (меняется по порядку: солнечно, ясно, облачно, смог/туман, пасмурно, дождь, гроза, снег)</td>
+                                        <td>RT, A, LB, LB, LT, LT, LT, X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Скользящие автомобили</td>
+                                        <td>Y, RB, RB, Left, RB, LB, RT, LB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Замедление (использовать от 1 до 4 раз чтобы усилить эффект, пятый раз – чтобы отключить)</td>
+                                        <td>Y, Left, Right, Right, X, RT, RB</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a class="accordion-toggle" href="#collapseXboxThree" data-toggle="collapse" data-parent="#accordion1"><br>
+                        <p class="cheats-list-btn">Транспорт</p><br>
+                    </a></div>
+                    <div class="accordion-body collapse" id="collapseXboxThree" style="height : 0px ;">
+                        <div class="accordion-inner">
+                            <table class="table font-cheats">
+                                <thead>
+                                    <tr>
+                                        <th>Эффект</th>
+                                        <th>Комбинация</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Получить Buzzard</td>
+                                        <td>B, B, LB, B, B, B, LB, LT, RB, Y, B, Y</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Caddy</td>
+                                        <td>B, LB, Left, RB, LT, A, RB, LB, B, A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Comet</td>
+                                        <td>RB, B, RT, Right, LB, LT, A, A, X, RB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Duster</td>
+                                        <td>Right, Left, RB, RB, RB, Left, Y, Y, A, B, LB, LB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Limo</td>
+                                        <td>RT, Right, LT, Left, Left, RB, LB, B, Right</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить PCJ-600</td>
+                                        <td>RB, Right, Left, Right, RT, Left, Right, X, Right, LT, LB, LB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Rapid GT</td>
+                                        <td>RT, LB, B, Right, LB, RB, Right, Left, B, RT</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Sanchez</td>
+                                        <td>B, A, LB, B, B, LB, B, RB, RT, LT, LB, LB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Stunt Plane</td>
+                                        <td>B, Right, LB, LT, Left, RB, LB, LB, Left, Left, A, Y</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Trashmaster</td>
+                                        <td>B, RB, B, RB, Left, Left, RB, LB, B, Right</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-console">
+                <img class="cheats-img img-max-width" src=""""),_display_(Seq[Any](/*165.61*/routes/*165.67*/.Assets.at("images/playstation_3_Logo.jpg"))),format.raw/*165.110*/("""" alt="gta5tv cheats for playstation_3" >
+                <p style="margin-left : 40px ;">GTA 5 коды на PS3</p>
+            </div>
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a class="accordion-toggle collapsed" href="#collapsePlaystationOne" data-toggle="collapse" data-parent="#accordion2"><br>
+                        <p class="cheats-list-btn">Эффекты для игрока</p><br>
+                    </a></div>
+                    <div class="accordion-body collapse" id="collapsePlaystationOne" style="height : 0px ;">
+                        <div class="accordion-inner">
+                            <table class="table font-cheats">
+                                <thead>
+                                    <tr>
+                                        <th>Эффект</th>
+                                        <th>Комбинация</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Пьяный режим</td>
+                                        <td>Triangle, Right, Right, Left, Right, Square, Circle, Left</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Взрывной выстрел</td>
+                                        <td>Right, Square, X, Left, R1, R2, Left, Right, Right, L1, L1, L1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Взрывы для ближнего боя</td>
+                                        <td>Right, Left, Square, Triangle, R1, Circle, Circle, Circle, L2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Быстрый бег</td>
+                                        <td>Triangle, Left, Right, Right, L2, L1, Square</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Горящие пули</td>
+                                        <td>L1, R1, Square, R1, Left, R2, R1, Left, Square, Right, L1, L1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Понизить уровень розыска</td>
+                                        <td>R1, R1, Circle, R2, Right, Left, Right, Left, Right, Left</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Повысить уровень розыска</td>
+                                        <td>R1, R1, Circle, R2, Left, Right, Left, Right, Left, Right</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Восстановление</td>
+                                        <td>X, X, Square, R1, L1, X, Right, Left, X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Замедление (использовать от 1 до 4 раз чтобы усилить эффект, пятый раз – чтобы отключить)</td>
+                                        <td>Square, L2, R1, Triangle, Left, Square, L2, Right, X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Падение с неба (вы появляетесь в небе, падаете и разбиваетесь насмерть!!!)</td>
+                                        <td>L1, L2, R1, R2, Left, Right, Left, Right, L1, L2, R1, R2, Left, Right, Left, Right</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить парашют</td>
+                                        <td>Left, Right, L1, L2, R1, R2, R2, Left, Left, Right, L1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a class="accordion-toggle" href="#collapsePlaystationTwo" data-toggle="collapse" data-parent="#accordion2"><br>
+                        <p class="cheats-list-btn">Эффекты для окружения</p><br>
+                    </a></div>
+                    <div class="accordion-body collapse" id="collapsePlaystationTwo" style="height : 0px ;">
+                        <div class="accordion-inner">
+                            <table class="table font-cheats">
+                                <thead>
+                                    <tr>
+                                        <th>Эффект</th>
+                                        <th>Комбинация</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Смена погоды (меняется по порядку: солнечно, ясно, облачно, смог/туман, пасмурно, дождь, гроза, снег)</td>
+                                        <td>R2, Square, L1, L1, L2, L2, L2, Square</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Скользящие автомобили</td>
+                                        <td>Triangle, R1, R1, Left, R1, L1, R2, L1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Замедление (использовать от 1 до 4 раз чтобы усилить эффект, пятый раз – чтобы отключить)</td>
+                                        <td>Triangle, Left, Right, Right, Square, R2, R1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a class="accordion-toggle" href="#collapsePlaystationThree" data-toggle="collapse" data-parent="#accordion2"><br>
+                        <p class="cheats-list-btn">Транспорт</p><br>
+                    </a></div>
+                    <div class="accordion-body collapse" id="collapsePlaystationThree" style="height : 0px ;">
+                        <div class="accordion-inner">
+                            <table class="table font-cheats">
+                                <thead>
+                                    <tr>
+                                        <th>Эффект</th>
+                                        <th>Комбинация</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Получить Buzzard</td>
+                                        <td>Circle, Circle, L1, Circle, Circle, Circle, L1, L2, R1, Triangle, Circle, Triangle</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Caddy</td>
+                                        <td>Circle, L1, Left, R1, L2, Square, R1, L1, Circle, Square</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Comet</td>
+                                        <td>R1, Circle, R2, Right, L1, L2, Square, Square, Square, R1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Duster</td>
+                                        <td>Right, Left, R1, R1, R1, Left, Triangle, Triangle, Square, Circle, L1, L1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Limo</td>
+                                        <td>R2, Right, L2, Left, Left, R1, L1, Circle, Right</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить PCJ-600</td>
+                                        <td>R1, Right, Left, Right, R2, Left, Right, Square Right, L2, L1, L1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Rapid GT</td>
+                                        <td>R2, L1, Circle, Right, L1, R1, Right, Left, Circle, R2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Sanchez</td>
+                                        <td>Circle, Square, L1, Circle, Circle, L1, Circle, R1, R2, L2, L1, L1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Stunt Plane</td>
+                                        <td>Circle, Right, L1, L2, Left, R1, L1, L1, Left, Left, Square, Triangle</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Получить Trashmaster</td>
+                                        <td>Circle, R1, Circle, R1, Left, Left, R1, L1, Circle, Right</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+""")))})))}
+    }
+    
+    def render(): play.api.templates.HtmlFormat.Appendable = apply()
+    
+    def f:(() => play.api.templates.HtmlFormat.Appendable) = () => apply()
+    
+    def ref: this.type = this
+
+}
+                /*
+                    -- GENERATED --
+                    DATE: Sun Oct 27 16:25:40 MSK 2013
+                    SOURCE: D:/projects/gta5/app/views/cheats.scala.html
+                    HASH: 8b5a04d711c29985580751c33164e76cce6348c4
+                    MATRIX: 550->1|645->3|681->5|693->10|744->53|783->55|1007->244|1021->250|1081->288|10590->9760|10606->9766|10673->9809
+                    LINES: 19->1|22->1|23->2|23->2|23->2|23->2|27->6|27->6|27->6|186->165|186->165|186->165
+                    -- GENERATED --
+                */
+            

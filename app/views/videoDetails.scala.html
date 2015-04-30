@@ -1,0 +1,23 @@
+@(videoList: Seq[models.data.Video])
+
+    <div id="videoDetails">
+        <article id="center-container">
+            <section class="content-list">
+                <ul>
+                @for(video <- videoList) {
+                    <li>
+                        <a href="@controllers.routes.VideoController.view(video.id)">
+                            <img class="img-max-width" width="300,465" height="178.2" src="http://img.youtube.com/vi/@video.link/0.jpg" alt="@video.name">
+                        </a>
+                        <article class="preview-details">
+                            <h3 class="post-title"><a href="@controllers.routes.VideoController.view(video.id)">@video.name</a></h3>
+                            <p class="excerpt">@Html(video.description)</p>
+                        </article>
+                        <a href="@controllers.routes.VideoController.view(video.id)" class="content-list-btn">Подробнее</a>
+                    </li>
+                }
+                </ul>
+            </section>
+        </article>
+    </div>
+

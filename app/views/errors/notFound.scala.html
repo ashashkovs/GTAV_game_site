@@ -1,0 +1,13 @@
+@(requestPath: String)
+
+@template.main("Ошибка 404", "") {
+    <div class="container" id="center-container">
+        <div id="errors">
+            <h1> 404: Страница не найдена </h1>
+            <fieldset>
+                <p> К сожалению, мы не смогли найти страницу [@requestPath] </p>
+                <p> Вернуться на <a href="@routes.Application.index()"> главную </a>.</p>
+            </fieldset>
+        </div>
+    </div>
+}

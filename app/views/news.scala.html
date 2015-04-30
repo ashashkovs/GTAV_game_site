@@ -1,0 +1,36 @@
+@(newsList: Seq[models.data.News], currentSortBy: String, currentOrder: String, currentFilter: String)
+
+    @views.html.template.main("Новости", "news") {
+        <div class="container" id="center-container">
+            <article id="center-container">
+                <section class="content-list">
+                    <ul>
+                    @for(news <- models.data.News.findAll()) {
+                        <li>
+                            <a href="@controllers.routes.NewsController.view(news.id)">
+                                <img class="imgNewsWH img-max-width" src="@news.link" alt="@news.name" title="@news.name">
+                            </a>
+                            <div class="news-date">@news.introduced</div>
+                            <article class="preview-details">
+                                <h3 class="post-title"><a href="@controllers.routes.NewsController.view(news.id)">@news.name</a></h3>
+                                <div class="excerpt">@Html(news.preview)</div>
+                            </article>
+                            <a href="@controllers.routes.NewsController.view(news.id)" class="content-list-btn">Подробнее</a>
+                        </li>
+                    }
+                    </ul>
+                </section>
+            </article>
+
+            <script type="text/javascript">
+            $ ( function ( ) {
+            // Button
+            $ ( "#button" ).button ( ) ;
+            $ ( "#button-disabled" ).button ( ).addClass ( "ui-state-disabled" ).attr ( "disabled", true ) ;
+            $ ( "#radioset" ).buttonset ( ) ;
+            } ) ;
+            </script>
+
+
+        </div>
+    }

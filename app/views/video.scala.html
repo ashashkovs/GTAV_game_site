@@ -1,0 +1,49 @@
+@(videoList: Seq[models.data.Video], currentSortBy: String, currentOrder: String, currentFilter: String)
+
+@views.html.template.main("Видео, трейлеры, прохождение", "video") {
+    <div class="container" id="center-container">
+        <div class="radioset-container">
+            <div class="tabs">
+                <input type="radio" name="tab" id="tab1" checked="checked" onclick="loadVideo ( 1 ) ;"/>
+                <label class="button-category" for="tab1" alt="GTA 5 Трейлеры">Трейлеры</label>
+                <input type="radio" name="tab" id="tab2" onclick="loadVideo ( 2 ) ;"/>
+                <label class="button-category" for="tab2" alt="GTA 5 Клипы">Клипы</label>
+                <input type="radio" name="tab" id="tab3" onclick="loadVideo ( 4 ) ;"/>
+                <label class="button-category" for="tab3" alt="GTA 5 Геймплей">Геймплей</label>
+                <input type="radio" name="tab" id="tab4" onclick="loadVideo ( 3 ) ;" />
+                <label class="button-category" for="tab4" alt="GTA 5 Видео-гид">Видео-гид</label>
+            </div>
+        </div>
+        <div id="videoDetails">
+            <article id="center-container">
+                <section class="content-list">
+                    <ul>
+                    @for(video <- videoList) {
+                        <li>
+                            <a href="@controllers.routes.VideoController.view(video.id)">
+                            <img class="img-max-width" width="300,465" height="178.2" src="http://img.youtube.com/vi/@video.link/0.jpg" alt="@video.name">
+                            </a>
+                            <article class="preview-details">
+                                <h3 class="post-title"><a href="@controllers.routes.VideoController.view(video.id)">@video.name</a></h3>
+                                <p class="excerpt">@Html(video.description)</p>
+                            </article>
+                            <a href="@controllers.routes.VideoController.view(video.id)" class="content-list-btn">Подробнее</a>
+                        </li>
+                    }
+                    </ul>
+                </section>
+            </article>
+        </div>
+
+
+        <script type="text/javascript">
+            function loadVideo ( categoryId ) {
+                jsRoutes.controllers.VideoController.loadsVideoDetails ( categoryId ).ajax ( {
+                    success : function ( data ) {
+                    $ ( "#videoDetails" ).replaceWith ( data ) ;
+                    }
+                } )
+            }
+        </script>
+    </div>
+}

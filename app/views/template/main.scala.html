@@ -1,0 +1,20 @@
+@(title: String, tab: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>GTA 5 | @Messages(title) </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Исследуйте огромный мир! Выполняйте захватывающие задания! Ощутите незабываемую атмосферу! Играйте в GTA 5 !">
+        <meta name="keywords" content="gta,gta 5,gta5,gta v,grand theft auto v,gta 5 xbox,grant theft auto 5,гта 5,гта v,гта пять,игра gta 5,gta 5 коды,GTAV,GTA5TV,gta 5 скачать,новости gta 5,gta 5 видео">
+        @libs._libs()
+    </head>
+    <body>
+        @views.html.template.header(tab)
+        <div id="bgImage"  class="bg-image"></div>
+        <section id="main" class="container-main">
+            @content
+        </section>
+        @views.html.template.footer()
+    </body>
+</html>

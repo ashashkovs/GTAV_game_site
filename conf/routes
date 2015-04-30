@@ -1,0 +1,50 @@
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                                controllers.Application.index()
+GET         /main                            controllers.MainController.main()
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                    controllers.Assets.at(path="/public", file)
+
+GET         /javascriptRoutes                controllers.Application.javascriptRoutes
+
+
+
+# Video page
+GET         /video                           controllers.VideoController.videoList(p:Int, s:String, o:String, f:String)
+POST        /video                           controllers.VideoController.loadsVideoDetails(id:Int)
+GET         /videoPage/:id                   controllers.VideoController.view(id:Int)
+# Photo page
+GET         /photo                           controllers.PhotoController.photoList()
+POST         /photo                          controllers.PhotoController.loadsPhotoDetails(id:Int)
+# News page
+GET         /news                            controllers.NewsController.newsList(p:Int, s:String, o:String, f:String)
+GET         /news/:id                        controllers.NewsController.view(id:Int)
+# Info page
+GET         /info/hints                      controllers.InfoController.hints()
+GET         /info/maps                       controllers.InfoController.maps()
+# Cheats page
+GET         /cheats                          controllers.CheatController.cheats()
+# Radio page
+GET         /radio                           controllers.RadioController.radio()
+
+
+# Админка
+GET         /admin                           controllers.admin.AdminController.admin
+GET         /admin/login                     controllers.admin.AdminController.login
+POST        /admin/auth                      controllers.admin.AdminController.auth
+GET         /admin/logout                    controllers.admin.AdminController.logout
+GET         /admin/news/list                 controllers.admin.NewsController.list(p:Int ?= 0, s:Int ?= 2, f ?= "")
+GET         /admin/news/edit/:id             controllers.admin.NewsController.edit(id: Int)
+POST        /admin/news/edit/:id             controllers.admin.NewsController.editPost(id: Int)
+GET         /admin/video                     controllers.admin.VideoController.list(p:Int ?= 0, s:Int ?= 2, f ?= "")
+GET         /admin/video/list                controllers.admin.VideoController.list(p:Int ?= 0, s:Int ?= 2, f ?= "")
+GET         /admin/video/create              controllers.admin.VideoController.create()
+POST        /admin/video/createPost          controllers.admin.VideoController.createPost()
+GET         /admin/video/edit/:id            controllers.admin.VideoController.edit(id: Int)
+POST        /admin/video/editPost/:id        controllers.admin.VideoController.editPost(id: Int)
+POST        /admin/:id/delete                controllers.admin.VideoController.delete(id:Int)
+
+

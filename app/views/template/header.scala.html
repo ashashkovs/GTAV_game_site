@@ -1,0 +1,46 @@
+@(tab: String)
+
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+<div class="container">
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="@controllers.routes.MainController.main()" class="navbar-brand" style="padding: 4px 15px">
+            <img class="img-max-width" src="@routes.Assets.at("images/gta5LogoHed2.png")" alt="Header GTA 5 TV">
+        </a>
+    </div>
+
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav" style="text-transform: uppercase;font-size: 15px">
+            <li class="@if(tab == "main") {active}">
+                <a href="@controllers.routes.MainController.main()"> Главная </a>
+            </li>
+            <li class="@if(tab == "news") {active}">
+                <a href="@controllers.routes.NewsController.newsList(1, "", "", "")"> Новости </a>
+            </li>
+            <li class="@if(tab == "video") {active}">
+                <a href="@controllers.routes.VideoController.videoList(1, "", "", "")"> Видео </a>
+            </li>
+            <li class="@if(tab == "photo") {active}">
+                <a href="@controllers.routes.PhotoController.photoList()"> Фото </a>
+            </li>
+            <li class="dropdown @if(tab == "hints" || tab == "maps") {active}" id="fat-menu"><a class="dropdown-toggle" id="dropInfo" role="button" href="#" data-toggle="dropdown">Инфо<b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu">
+                        <li><a tabindex="-1" href="@controllers.routes.InfoController.hints()">Cоветы и подсказки</a></li>
+                        <li><a tabindex="-1" href="@controllers.routes.InfoController.maps()">Карты</a></li>
+                </ul>
+            </li>
+            <li class="@if(tab == "cheats") {active}">
+                <a href="@controllers.routes.CheatController.cheats()"> Коды </a>
+            </li>
+            <li class="@if(tab == "radio") {active}">
+                <a href="@controllers.routes.RadioController.radio()"> Радио </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</header>
